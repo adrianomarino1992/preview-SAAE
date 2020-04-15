@@ -1,0 +1,29 @@
+@media only screen and (orientation: landscape) {
+    .float_bottom25 {
+        display: none;
+    }
+}
+
+@media screen and (min-height: 950px) {
+    .float_bottom25 {
+        display: none;
+    }
+}
+
+MEDIA
+https://www.w3schools.com/cssref/css3_pr_mediaquery.asp
+
+CUSTOM SELECT
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover
+
+
+<li><h3>Procolo: 01<br>Categoria: ABC<br>Subcategoria: abc<br>Status: RECEBIDO</h3></li>
+<li><h3>Procolo: 02<br>Categoria: DEF<br>Subcategoria: def<br>Status: RECEBIDO</h3></li>
+<li><h3>Procolo: 03<br>Categoria: GHI<br>Subcategoria: ghi<br>Status: RECEBIDO</h3></li>
+<li><h3>Procolo: 04<br>Categoria: JKL<br>Subcategoria: jkl<br>Status: RECEBIDO</h3></li>
+<li><h3>Procolo: 05<br>Categoria: MNO<br>Subcategoria: mno<br>Status: RECEBIDO</h3></li>
+<li><h3>Procolo: 06<br>Categoria: PQR<br>Subcategoria: pqr<br>Status: RECEBIDO</h3></li>
+<li><h3>Procolo: 07<br>Categoria: STU<br>Subcategoria: stu<br>Status: RECEBIDO</h3></li>
+<li><h3>Procolo: 08<br>Categoria: VWX<br>Subcategoria: vwx<br>Status: RECEBIDO</h3></li>
+<li><h3>Procolo: 09<br>Categoria: YZAA<br>Subcategoria: yzaa<br>Status: RECEBIDO</h3></li>
+<li><h3>Procolo: 10<br>Categoria: AABC<br>Subcategoria: aabc<br>Status: RECEBIDO</h3></li>

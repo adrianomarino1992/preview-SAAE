@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- TITLE -->
+    <title>Telefones</title>
+    <!-- ENCODING -->
+    <meta charset="utf-8" />
+    <!-- DOCUMENT AREA -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- DESCRIPTION -->
+    <meta name="description" content="Aplicação para conectar os munícipes e a prefeitura de Jacareí">
+    <!-- KEYWORDS -->
+    <meta name="keywords" content="Conecta Jacareí, Ocorrências, Denúncias, Prefeitura de Jacareí">
+    <!-- DEFAULT DOCUMENT -->
+    <meta name="robots" content="index, follow">
+    <!-- AUTHOR -->
+    <meta name="author" content="Prefeitura de Jacareí">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <!-- ICON -->
+    <!-- MANIFEST -->
+</head>
+
+<body>
+
+    <!-- HEADER == TOOLBAR -->
+    <header class="navigation_flex">
+        <!-- LEFT ELEMENTS -->
+        <div class="navigation_flex header_left">
+            <ul>
+                <li id="voltar" class="navigation_flex">
+                    <img id="img_voltar" src="img/nav_voltar.png" alt="Voltar" title="Voltar">
+                </li>
+                <li id="logo" class="navigation_flex">
+                    <img id="img_logo" src="img/brasao.png" alt="Prefeitura de Jacareí" title="Prefeitura de Jacareí">
+                </li>
+            </ul>
+        </div>
+        <!-- RIGHT ELEMENTS -->
+        <div class="navigation_flex header_right">
+            <ul>
+                <li id="ajuda" class="navigation_flex">
+                    <img id="ajuda" src="img/nav_ajuda.png" alt="Ajuda" title="Ajuada">
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- MAIN == CONTENT -->
+    <main class="main_top60 content_flex">
+        <!-- SECTION == LOGIN -->
+        <section id="telefone" class="content_flex">
+            <div class="content_flex">
+                <img id="img_telefone" src="img/telefone.png" alt="Telefones" title="Telefones">
+                <h1>TELEFONES ÚTEIS</h1>
+                <ul id="ul_corpo"></ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- DIV == ALERT DIALOG -->
+    <div id="alert" class="tools_flex alert_flex">
+        <div id="alert_background" class="tools_flex alert_flex">
+            <div id="alert_text" class="tools_flex alert_flex">
+            </div>
+            <div id="alert_buttons" class="tools_flex alert_flex">
+            </div>
+        </div>
+    </div>
+
+    <!-- DIV == LOADER -->
+    <div id="loader" class="tools_flex loader_flex">
+        <div id="loader_background" class="tools_flex loader_flex">
+            <div id="loader_animation" class="tools_flex loader_flex">
+                <svg viewBox="0 0 32 32" width="35" height="35">
+                    <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIV == FLOAT BUTTON -->
+    <div class="float_bottom25 tools_flex">
+        <ul>
+            <li id="float" class="tools_flex">
+                <img id="img_float" src="img/down.png" alt="Mover para o último" title="Mover para o último">
+            </li>
+        </ul>
+    </div>
+    <div id="menu_ajuda">
+        <h1 id="tituloPermissions">Como Usar : </h1>
+        <p>Telefones de utilidade publica, apenas clique sobre eles que ja ira realizar uma chamada. </p>
+
+
+
+
+    </div>
+    <!-- JQUERY JS -->
+    <script src="jquery/jquery-3.3.1.js"></script>
+    <!-- MAIN JS == CONTROLLERS -->
+    <script src="js/main.js"></script>
+    <!-- INDEX JS == INTERACTION -->
+    <script src="js/telefone.js"></script>
+</body>
+
+</html>

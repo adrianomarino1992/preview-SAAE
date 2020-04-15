@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- TITLE -->
+    <title>Serviços</title>
+    <!-- ENCODING -->
+    <meta charset="iso-8859-1" />
+    <!-- DOCUMENT AREA -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- DESCRIPTION -->
+    <meta name="description" content="Aplicação para conectar os munícipes e a prefeitura de Jacareí">
+    <!-- KEYWORDS -->
+    <meta name="keywords" content="Conecta Jacareí, Ocorrências, Denúncias, Prefeitura de Jacareí">
+    <!-- DEFAULT DOCUMENT -->
+    <meta name="robots" content="index, follow">
+    <!-- AUTHOR -->
+    <meta name="author" content="Prefeitura de Jacareí">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <!-- OPENLAYERS CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="openlayers/ol.css" />
+    <!-- ICON -->
+    <!-- MANIFEST -->
+</head>
+
+<body>
+
+    <!-- HEADER == TOOLBAR -->
+    <header class="navigation_flex">
+        <!-- LEFT ELEMENTS -->
+        <div class="navigation_flex header_left">
+            <ul>
+                <li id="voltar" class="navigation_flex">
+                    <img id="img_voltar" src="img/nav_voltar.png" alt="Voltar" title="Voltar">
+                </li>
+                <li id="logo" class="navigation_flex">
+                    <img id="img_logo" src="img/brasao.png" alt="Prefeitura de Jacareí" title="Prefeitura de Jacareí">
+                </li>
+            </ul>
+        </div>
+        <!-- RIGHT ELEMENTS -->
+        <div class="navigation_flex header_right">
+            <ul>
+                <li id="more" class="navigation_flex">
+                    <img id="img_more" src="img/nav_mais.png" alt="Mais Opções" title="Mais Opções">
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="navigation_flex">
+        <div class="navigation_flex navigation">
+            <ul>
+                <li id="nav_cliente" class="navigation_flex">
+                    <img src="img/cliente.png" alt="Descrição" title="Descrição">
+                </li>
+                <li id="nav_worker" class="navigation_flex">
+                    <img src="img/worker.png" alt="Câmera" title="Câmera">
+                </li>
+                <li id="nav_mapa" class="navigation_flex">
+                    <img src="img/position.png" alt="Mapa" title="Mapa">
+                </li>
+                <li id="nav_salvar" class="navigation_flex">
+                    <img src="img/salvar.png" alt="Salvar" title="Salvar">
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN == CONTENT -->
+    <main class="main_top120">
+        <!-- SECTION MAP -->
+        <section id="map"></section>
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup-content"></div>
+        </div>
+        <!-- SECTION == LOGIN -->
+        <section id="cliente" class="content_flex" style="display: block;">
+            <div style="height: 90%;">
+                <img id="img_ocorrencia" src="img/cliente.png" alt="Ocorrências" title="Ocorrências">
+                <h1 style="font-size: 19PX;">BUSCAR PROFISSIONAL</h1>
+                <!-- DIV == CATEGORIA -->
+                <div class="content_flex select">
+                    <h2>PROFISSIONAL : </h2>
+                    <select class="selecty" id="profissao_cliente">
+                        <option value="0" disabled selected>Profissão</option>
+                        <option value="Funileiro">Funileiro</option>
+                        <option value="Pintor">Pintor</option>
+                        <option value="Diarista">Diarista</option>
+                        <option value="Programador">Programador</option>
+                        <option value="Professor">Professor</option>
+                        <option value="Desing grafico">Desing grafico</option>
+                    </select>
+                    <br><br><br>
+                    <h2>RESULTADO:</h2>
+                    <select class="selecty" id="prox_cliente">
+                        <option value="1">Mais proximo</option>
+                        <option value="3">3 mais proximos</option>
+                        <option value="5">5 mais proximos</option>
+                        <option value="10">10 mais proximos</option>
+
+
+                    </select>
+                </div>
+                <div id="autonomo_result" style="border: none; box-shadow: none; margin-top: 25px;">
+
+                </div>
+            </div>
+        </section>
+
+        <section id="autonomo" class="content_flex" style="display: none;">
+            <div style="height: 700px;">
+                <img id="img_ocorrencia" src="img/worker.png" alt="Ocorrências" title="Ocorrências">
+                <h1 style="font-size: 19PX;">CADASTRO </h1>
+                <!-- DIV == CATEGORIA -->
+                <div class="content_flex select">
+                    <h2>EU SOU:</h2>
+                    <select class="selecty" id="profissao_autonomo">
+                        <option value="0" disabled selected>Profissão</option>
+                        <option value="Funileiro">Funileiro</option>
+                        <option value="Pintor">Pintor</option>
+                        <option value="Diarista">Diarista</option>
+                        <option value="Programador">Programador</option>
+                        <option value="Professor">Professor</option>
+                        <option value="Desing grafico">Desing grafico</option>
+                    </select>
+
+                    <BR><BR>  <BR>
+                    <h2>DESCRIÇÃO:</h2>
+                    <textarea name="" id="descricao_autonomo" cols="30" rows="10">
+
+                        </textarea>
+                    <BR>
+                    <h2>ENDEREÇO:</h2>
+                    <input type="text" placeholder="será preenchido sozinho" style="width: 95%" id="autonomo_endereco"disabled>
+                    <h2>TELEFONE COMERCIAL:</h2>
+                    <input type="text" placeholder="(cod area)telefone" style="width: 95%" id="telefone_autonomo">
+                </div>
+            </div>
+        </section>
+
+        <section id="autonomo" class="content_flex" style="display: none;">
+            <div style="height: 700px;">
+                <img id="img_ocorrencia" src="img/meucadastro.png" alt="Ocorrências" title="Ocorrências">
+                <h1 style="font-size: 19PX;">MEU CADASTRO </h1>
+                <!-- DIV == CATEGORIA -->
+                <div class="content_flex select">
+                    <h2>EU SOU:</h2>
+                    <select class="selecty">
+                        <option value="0" disabled selected>Profissão</option>
+                        <option value="profissao 1">Funileiro</option>
+                        <option value="profissao 2">Pintor</option>
+                        <option value="profissao 3">Diarista</option>
+                        <option value="profissao 4">Programador</option>
+                        <option value="profissao 5">Professor</option>
+                        <option value="profissao 6">Desing grafico</option>
+                    </select>
+
+                    <BR><BR>  <BR>
+                    <h2>DESCRIÇÃO:</h2>
+                    <textarea name="" id="" cols="30" rows="10">
+
+                        </textarea>
+                    <BR>
+                    <h2>ENDEREÇO:</h2>
+                    <input type="text" placeholder="será preenchido sozinho" style="width: 95%" id="autonomo_endereco">
+                    <h2>TELEFONE COMERCIAL:</h2>
+                    <input type="text" placeholder="(12)00000000" style="width: 95%">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <div id="popUpServico">
+
+    </div>
+
+    <!-- DIV == MORE OPTIONS -->
+    <div id="menu_more" class="menu_flex">
+        <div id="menu_list" class="menu_flex">
+            <ul>
+                <li id="li_ajuda">Ajuda</li>
+                <li id="li_historico">Histórico de Denuncias</li>
+                <li id="li_permissoes">Permissões</li>
+            </ul>
+        </div>
+    </div>
+    <div id="menu_permissions">
+
+    </div>
+
+    <div id="menu_ajuda">
+        <h1 id="tituloPermissions">Como Usar : </h1>
+        <p>
+            Inicialmente iremos escolher a categoria da Ocorrência, isso determinará para onde essa ocorrência será encaminhada.
+        </p>
+        <p>
+            Após, determinar uma subcategoria, escrever uma breve descrição sobre, e por fim iremos tirar uma foto do problema.
+            <br>
+            <br> Nesse momento, o proprio Conecta Jacarei irá obter as coordenadas do dispositivo.
+
+        </p>
+
+
+        <img src="img/next.png" id="ajuda_next" onclick="Next()">
+    </div>
+
+    <!-- DIV == FOTO ZOOM -->
+    <div id="div_zoom" class="foto_flex">
+        <img id="img_zoom" src="img/teste.jpg" alt="Foto Ampliada" title="Foto Ampliada">
+    </div>
+    <!-- DIV == ALERT DIALOG -->
+    <div id="alert" class="tools_flex alert_flex">
+        <div id="alert_background" class="tools_flex alert_flex">
+            <div id="alert_text" class="tools_flex alert_flex">
+            </div>
+            <div id="alert_buttons" class="tools_flex alert_flex">
+            </div>
+        </div>
+    </div>
+
+    <!-- DIV == LOADER -->
+    <div id="loader" class="tools_flex loader_flex">
+        <div id="loader_background" class="tools_flex loader_flex">
+            <div id="loader_animation" class="tools_flex loader_flex">
+                <svg viewBox="0 0 32 32" width="35" height="35">
+                    <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIV == TOAST MESSAGE -->
+    <div id="toast" class="tools_flex toast_flex">
+        <div id="toast_text" class="tools_flex toast_flex"></div>
+    </div>
+
+    <!-- JQUERY JS -->
+    <script src="jquery/jquery-3.3.1.js"></script>
+    <!-- OPENLAYERS JS -->
+    <script src="openlayers/ol.js"></script>
+    <!-- MAP JS -->
+    <script src="js/map.js"></script>
+    <!-- MAIN JS == CONTROLLERS -->
+    <script src="js/main.js"></script>
+    <!-- INDEX JS == INTERACTION -->
+    <script src="js/servicos.js" charset="utf-8"></script>
+</body>
+
+</html>

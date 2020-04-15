@@ -1,0 +1,7 @@
+[user]
+	name = eduardo
+	email = eduardo@fatec
+[pack]
+	compression = -1
+	packsizelimit = 3g
+	windowMemory = 0

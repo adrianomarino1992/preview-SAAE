@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- TITLE -->
+    <title>Recuperar Senha</title>
+    <!-- ENCODING -->
+    <meta charset="utf-8" />
+    <!-- DOCUMENT AREA -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- DESCRIPTION -->
+    <meta name="description" content="Aplicação para conectar os munícipes e a prefeitura de Jacareí">
+    <!-- KEYWORDS -->
+    <meta name="keywords" content="Conecta Jacareí, Ocorrências, Denúncias, Prefeitura de Jacareí">
+    <!-- DEFAULT DOCUMENT -->
+    <meta name="robots" content="index, follow">
+    <!-- AUTHOR -->
+    <meta name="author" content="Prefeitura de Jacareí">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <!-- ICON -->
+    <!-- MANIFEST -->
+</head>
+
+<body>
+
+    <!-- HEADER == TOOLBAR -->
+    <header class="navigation_flex">
+        <!-- LEFT ELEMENTS -->
+        <div class="navigation_flex header_left">
+            <ul>
+                <li id="voltar" class="navigation_flex">
+                    <img id="img_voltar" src="img/nav_voltar.png" alt="Voltar" title="Voltar">
+                </li>
+                <li id="logo" class="navigation_flex">
+                    <img id="img_logo" src="img/brasao.png" alt="Prefeitura de Jacareí" title="Prefeitura de Jacareí">
+                </li>
+            </ul>
+        </div>
+        <!-- RIGHT ELEMENTS -->
+        <div class="navigation_flex header_right">
+            <ul>
+                <li id="ajuda" class="navigation_flex">
+                    <img id="img_ajuda" src="img/nav_ajuda.png" alt="Ajuda" title="Ajuda">
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- MAIN == CONTENT -->
+    <main class="main_top60">
+        <!-- SECTION == LOGIN -->
+        <section id="recuperar" class="content_flex">
+            <div class="content_flex">
+                <img id="img_recuperar" src="img/senha.png" alt="Recuperar Senha" title="Recuperar Senha">
+                <h1>RECUPERAR SENHA</h1>
+                <input id="ipt_cpf_index" type="text" inputmode="numeric" maxlength="11" placeholder="CPF">
+                <input id="ipt_email_recuperar" type="email" maxlength="40" placeholder="E-MAIL">
+                <button id="btn_cadastrar">RECUPERAR</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="menu_ajuda">
+        <h1 id="tituloPermissions">Como Usar : </h1>
+        <p>Caso queira recuperar sua senha, basta informa seu cpf e o email cadastrado, uma nova senha será enviada para seu email. </p>
+        
+
+
+
+    </div>
+
+    <!-- JQUERY JS -->
+    <script src="jquery/jquery-3.3.1.js"></script>
+    <!-- MAIN JS == CONTROLLERS -->
+    <script src="js/main.js"></script>
+    <!-- INDEX JS == INTERACTION -->
+    <script src="js/recuperar.js"></script>
+</body>
+
+</html>

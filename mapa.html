@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mapa</title>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <style>
+        #Layers {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #eeeeeeb0;
+            border: 1px solid #d3d2d2;
+            width: 200px;
+            height: 200px;
+            overflow: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map" class="map"></div>
+    <div id="Layers">
+        
+    </div>
+    <script>
+        var allVisibleLayers = { layers: [] };
+
+
+
+        function newVectorStyle(fill, stroke, width) {
+            let style = new ol.style.Style({
+                fill: new ol.style.Fill({
+                    color: fill
+                }),
+                stroke: new ol.style.Stroke({
+                    width: width,
+                    color: stroke
+                }),
+                image: new ol.style.Circle({
+                    fill: new ol.style.Fill({
+                        color: fill
+                    }),
+                    stroke: new ol.style.Stroke({
+                        width: width,
+                        color: stroke
+                    }),
+                    radius: 7
+                })
+            });
+            return style;
+        };
+      
+
+          
+          
+    
+            var map = new ol.Map({
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    })
+                    
+                ],
+                target: 'map',
+                controls: ol.control.defaults({
+                    attributionOptions: {
+                        collapsible: false
+                    }
+                }),
+                view: new ol.View({
+            projection: 'EPSG:4326',
+            center: [-45.96, -23.3],
+    
+            zoom: 10,           
+            maxZoom: 19
+    
+        })
+    });
+    
+
+  
+
+ 
+     var a_abastecimento_boosters_pt = {"type":"FeatureCollection","name":"conectaJacarei","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.9637539406464,-23.2864456788253]]},"properties":{"id":"7","gid":"6","basic_geom":"ponto","sprrotulo":"B17","sprnome":"B17","bairro":"Jd. Santa Maria","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.9631865545313,-23.2630301762338]]},"properties":{"id":"8","gid":"7","basic_geom":"ponto","sprrotulo":"B16","sprnome":"B16","bairro":"Pq. Meia Lua","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.9604445520981,-23.3154072820154]]},"properties":{"id":"4","gid":"3","basic_geom":"ponto","sprrotulo":"B04","sprnome":"B04","bairro":"Santa Terezinha","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.9437996577058,-23.2770258851498]]},"properties":{"id":"5","gid":"4","basic_geom":"ponto","sprrotulo":"B15","sprnome":"B15","bairro":"Jardim California","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.9437996577058,-23.2770258851498]]},"properties":{"id":"6","gid":"5","basic_geom":"ponto","sprrotulo":"B14","sprnome":"B14","bairro":"Jardim California","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.9622079254324,-23.3007239315756]]},"properties":{"id":"16","gid":"15","basic_geom":"ponto","sprrotulo":"B07","sprnome":"B07","bairro":"Pq. Brasil","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-46.0005626139589,-23.3141510986372]]},"properties":{"id":"11","gid":"10","basic_geom":"ponto","sprrotulo":"B10","sprnome":"B10","bairro":"Jd. Esperana","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.9966263537069,-23.3125348466555]]},"properties":{"id":"12","gid":"11","basic_geom":"ponto","sprrotulo":"B12","sprnome":"B12","bairro":"Jd. Terras de So Joo","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.9932669990424,-23.318907575075]]},"properties":{"id":"3","gid":"2","basic_geom":"ponto","sprrotulo":"B13","sprnome":"B13","bairro":"Jd. Terras de So Joo","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.9859412180515,-23.3140603617305]]},"properties":{"id":"13","gid":"12","basic_geom":"ponto","sprrotulo":"B20","sprnome":"B20","bairro":"Jd. Terras de Santa Helena","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.9785824091472,-23.3101537501722]]},"properties":{"id":"14","gid":"13","basic_geom":"ponto","sprrotulo":"B02","sprnome":"B02","bairro":"Jd. Panorama","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-45.972092431794,-23.3008518677254]]},"properties":{"id":"15","gid":"14","basic_geom":"ponto","sprrotulo":"B05","sprnome":"B05","bairro":"LAVALPA","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-46.0608068017767,-23.2320558757642]]},"properties":{"id":"1","gid":"0","basic_geom":"ponto","sprrotulo":"B21","sprnome":"B21","bairro":"Recanto dos Passaros-IV","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-46.0269333314781,-23.293558768055]]},"properties":{"id":"9","gid":"8","basic_geom":"ponto","sprrotulo":"B19","sprnome":"B19","bairro":"Bela Vista/Ygaraps","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-46.0129937845279,-23.3052344007187]]},"properties":{"id":"2","gid":"1","basic_geom":"ponto","sprrotulo":"B08","sprnome":"B08","bairro":"Nova Jacare","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}},{"type":"Feature","geometry":{"type":"MultiPoint","coordinates":[[-46.0110048458803,-23.310327165734]]},"properties":{"id":"10","gid":"9","basic_geom":"ponto","sprrotulo":"B09","sprnome":"B09","bairro":"Jd. Nova Esperana","volume":"0","producao":"0","relacao":"abastecimento","relacao_1":"boosters","fonte_dado":"sma-jac","arquivo":"a_abastecimento_boosters_pt"}}]};
+
+            var stylea_abastecimento_boosters_pt = newVectorStyle('#d3d2d29d','#f70606',2);
+
+            var vectorSourcea_abastecimento_boosters_pt = new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(a_abastecimento_boosters_pt)
+              });
+        
+              
+        
+              var vectorLayera_abastecimento_boosters_pt = new ol.layer.Vector({
+                source: vectorSourcea_abastecimento_boosters_pt,
+                style : stylea_abastecimento_boosters_pt
+                
+              });
+              var obj = { 'camada': vectorLayera_abastecimento_boosters_pt, 'nome': 'a_abastecimento_boosters_pt' };
+              allVisibleLayers.layers.push(obj);
+
+              map.addLayer(vectorLayera_abastecimento_boosters_pt);
+
+              
+
+            
+
+    $('#Layers').empty();
+    for (var i = 0; i < allVisibleLayers.layers.length; i++) {
+        $('#Layers').append('<input type="checkbox" class="camadas" name="'+allVisibleLayers.layers[i].nome+'" checked>'+allVisibleLayers.layers[i].nome);
+    }
+	
+	  $('.camadas').on('click', (event) => {
+            var input = event.currentTarget;
+            var layer = input.name;
+            var layerVisibility = input.checked;
+            for (var i = 0; i < allVisibleLayers.layers.length; i++) {
+                if (layer == allVisibleLayers.layers[i].nome) {
+
+                    if (layerVisibility == false) {
+                        map.removeLayer(allVisibleLayers.layers[i].camada);
+                    } else {
+                        map.addLayer(allVisibleLayers.layers[i].camada);
+                    }
+
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
+    
