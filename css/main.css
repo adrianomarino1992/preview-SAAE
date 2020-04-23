@@ -61,7 +61,7 @@ body {
     /* background-color: #3f3e3ea4; */
     background-color: #0a0a0ab8;
     z-index: 130;
-    display: none;
+    display: block;
 }
 
 #logIn {
