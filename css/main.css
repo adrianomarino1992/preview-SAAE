@@ -61,7 +61,7 @@ body {
     /* background-color: #3f3e3ea4; */
     background-color: #0a0a0ab8;
     z-index: 130;
-    display: none;
+    display: block;
 }
 
 #logIn {
@@ -2161,6 +2161,11 @@ main {
     margin-top: 4px;
 }
 
+#logo_primeiraDiv {
+    width: 80%;
+    margin: 10%;
+}
+
 @media only screen and ( max-width: 900px) {
     .noMobile {
         display: none;
@@ -2203,6 +2208,7 @@ main {
     }
     #logo_primeiraDiv {
         width: 80%;
+        margin: 10%;
     }
     #fecharCadastro {
         display: none;

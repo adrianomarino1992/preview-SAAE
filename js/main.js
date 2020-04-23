@@ -3155,85 +3155,35 @@ input_user.on('change', () => {
     }
 })
 
-
+let users = [{
+    user: "natasha.kredensir",
+    pass: "nk123456"
+}, {
+    user: "adm",
+    pass: "adm654321"
+}];
 
 var exec_LogIn = $('#exec_LogIn');
 exec_LogIn.on('click', () => {
+
+
     openLoader();
-    var typeUser = $(input_user).val();
-
-    var user = $('#user').val();
-    var senha = $('#senha').val();
-
-    if (typeUser == "curso") {
-        if (user == "admin") {
-
-            if (senha == "123") {
-
-                setTimeout(() => {
-                    $('#primeiraDiv').fadeOut();
-                    closeLoader();
-
-                }, 3000);
-            } else {
-                setTimeout(() => {
-
-                    closeLoader();
-                    alert(`Senha para : ${user} está incorreta.`);
-
-                }, 3000);
-
-            }
-        } else {
-            alert(`Usuario : ${user} não existe.`);
-        }
-    } else if (typeUser == "cidadao") {
-        // alert('Servidor em manutenção, tente novamente mais tarde !');
-        //closeLoader();
-        var url = `${host}/login/cidadao?user=${user}&senha=${senha}`;
-        $.getJSON(url, (data) => {
-            closeLoader();
-            if (data.erro) {
-                alert(data.erro);
-            } else {
-                if (data.user) {
-
-                    cidadao = data.user;
-                    $('#primeiraDiv').fadeOut();
-
-                }
-            }
-        })
-    } else if (typeUser == "funcionario") {
-
-        var url = `${host}/login/funcionario?user=${user}&senha=${senha}`;
-        url = encodeURI(url);
-        var abort;
-        var query = $.getJSON(url, (data) => {
-            clearTimeout(abort);
-            closeLoader();
-            if (data.erro) {
-                alert(data.erro);
-            } else {
-                if (data.user && data.script) {
-                    $("body").append($("<script />", {
-                        html: data.script
-                    }))
-                    agente = data.user;
-                    console.log(agente);
-                    $('#primeiraDiv').fadeOut();
-
-                } else {
-                    alert('Usuario e/ou senha invalido !');
-                }
-            }
-        })
-        abort = setTimeout(() => {
-            query.abort();
-            closeLoader();
-            alert('Tempo de espera expirado, verifique sua conexão !');
-        }, 10000)
+    let user = {
+        user: $('#user').val(),
+        pass: $('#senha').val()
     }
+
+
+    setTimeout(() => {
+        if (user.user == "adm" && user.pass == "adm654321") {
+            closeLoader();
+            $('#primeiraDiv').fadeOut();
+        } else {
+            closeLoader();
+            alert("Usuario e/ou senha incorretos");
+        }
+    }, 2000);
+
 
 })
 
