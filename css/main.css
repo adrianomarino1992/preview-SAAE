@@ -61,7 +61,7 @@ body {
     /* background-color: #3f3e3ea4; */
     background-color: #0a0a0ab8;
     z-index: 130;
-    display: block;
+    display: none;
 }
 
 #logIn {
@@ -764,7 +764,7 @@ h2 {
 
 #divFiltrardados_h2_fiscalizacao {
     position: absolute;
-    top: 200px;
+    top: 170px;
     left: 5%;
     border: 1px solid rgba(0, 0, 0, 0.308);
     width: 90%;
@@ -776,7 +776,7 @@ h2 {
 
 #divFiltrardados_h2_Base_cartografica {
     position: absolute;
-    top: 200px;
+    top: 170px;
     left: 5%;
     border: 1px solid rgba(0, 0, 0, 0.308);
     width: 90%;
@@ -788,7 +788,7 @@ h2 {
 
 #divFiltrardados_h2_Base_SMA {
     position: absolute;
-    top: 200px;
+    top: 170px;
     left: 5%;
     border: 1px solid rgba(0, 0, 0, 0.308);
     width: 90%;
@@ -800,7 +800,7 @@ h2 {
 
 #divFiltrardados_h2_Base_GOV {
     position: absolute;
-    top: 200px;
+    top: 170px;
     left: 5%;
     border: 1px solid rgba(0, 0, 0, 0.308);
     width: 90%;
@@ -1306,7 +1306,7 @@ main {
     position: absolute;
     top: 0%;
     left: 700px;
-    height: 160px;
+    height: 280px;
     overflow: auto;
     z-index: 100;
     background-image: linear-gradient(to bottom right, rgb(255, 255, 255), var(--fundo));
@@ -1337,7 +1337,7 @@ main {
     position: absolute;
     top: 0%;
     left: 700px;
-    height: 160px;
+    height: 280;
     overflow: auto;
     z-index: 100;
     background-image: linear-gradient(to bottom right, rgb(255, 255, 255), var(--fundo));
@@ -2166,7 +2166,7 @@ main {
     margin: 10%;
 }
 
-@media only screen and ( max-width: 900px) {
+@media only screen and ( max-width: 600px) {
     .noMobile {
         display: none;
     }

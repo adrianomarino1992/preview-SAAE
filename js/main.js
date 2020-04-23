@@ -412,26 +412,21 @@ var divFiltrardados_h2 = $('#divFiltrardados_h2 h2');
 for (var btn of divFiltrardados_h2) {
     $(btn).on('click', (event) => {
         var cat = event.currentTarget;
-        if ($(cat).text() == "Base Cartografica") {
+        if ($(cat).text() == "Rede de Água") {
             $('#divFiltrardados_h2_Base_cartografica').fadeIn();
             $('#divFiltrardados_h2_fiscalizacao').fadeOut();
             $('#divFiltrardados_h2_Base_SMA').fadeOut();
             $('#divFiltrardados_h2_Base_GOV').fadeOut();
-        } else if ($(cat).text() == "Secretaria do Meio Ambiente") {
+        } else if ($(cat).text() == "Rede de Esgoto") {
             $('#divFiltrardados_h2_Base_cartografica').fadeOut();
             $('#divFiltrardados_h2_fiscalizacao').fadeOut();
             $('#divFiltrardados_h2_Base_SMA').fadeIn();
             $('#divFiltrardados_h2_Base_GOV').fadeOut();
-        } else if ($(cat).text() == "Secretaria do Governo") {
+        } else if ($(cat).text() == "Cadastro Básico") {
             $('#divFiltrardados_h2_Base_cartografica').fadeOut();
             $('#divFiltrardados_h2_fiscalizacao').fadeOut();
             $('#divFiltrardados_h2_Base_SMA').fadeOut();
             $('#divFiltrardados_h2_Base_GOV').fadeIn();
-        } else {
-            $('#divFiltrardados_h2_Base_cartografica').fadeOut();
-            $('#divFiltrardados_h2_fiscalizacao').fadeIn();
-            $('#divFiltrardados_h2_Base_SMA').fadeOut();
-            $('#divFiltrardados_h2_Base_GOV').fadeOut();
         }
     })
 }

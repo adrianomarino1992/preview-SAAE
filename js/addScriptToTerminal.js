@@ -1,9 +1,3 @@
-
-
-
-
-
-
 //+++++++++++++++++++++++++++++++++++++++ scrpit Funcionario ++++++++++++++
 var btnAdmin = document.createElement('button');
 btnAdmin.appendChild(newImg('./img/admin.png'));
@@ -50,7 +44,7 @@ $(document).on('keyup', '#consultaTerminal', (event) => {
             link.href = makeTextFile(text);
             document.body.appendChild(link);
 
-            window.requestAnimationFrame(function () {
+            window.requestAnimationFrame(function() {
                 let event = new MouseEvent('click');
                 link.dispatchEvent(event);
                 document.body.removeChild(link);
@@ -69,13 +63,13 @@ $(document).on('keyup', '#consultaTerminal', (event) => {
                 $('#consultaTerminalResult').append(`<p>=========================${bdAtual}=========================</p>`);
                 $('#consultaTerminal').val("");
             }
-        }else if ($('#consultaTerminal').val().toLocaleLowerCase().trim() == "suporte" || $('#consultaTerminal').val().toLocaleLowerCase().trim() == "ajuda" || $('#consultaTerminal').val().toLocaleLowerCase().trim() == "autor" || $('#consultaTerminal').val().toLocaleLowerCase().trim() == "help") { 
-            
+        } else if ($('#consultaTerminal').val().toLocaleLowerCase().trim() == "suporte" || $('#consultaTerminal').val().toLocaleLowerCase().trim() == "ajuda" || $('#consultaTerminal').val().toLocaleLowerCase().trim() == "autor" || $('#consultaTerminal').val().toLocaleLowerCase().trim() == "help") {
+
             $('#consultaTerminalResult').append(`<p>ENTRE EM CONTATO COM : adriano.marino1992@gmail.com</p>`);
             $('#consultaTerminal').val("");
-        }else if ($('#consultaTerminal').val().toLocaleLowerCase().trim() == "adicionar funcionario") { 
+        } else if ($('#consultaTerminal').val().toLocaleLowerCase().trim() == "adicionar funcionario") {
             $('#adicionar_remover').fadeIn();
-           // var r = prompt('Informe o email do agente : ','exemplo@exemplo.com');
+            // var r = prompt('Informe o email do agente : ','exemplo@exemplo.com');
             // if(r){
             //     var abort;
             //     var url = `${host}/create/new/agente?email=${r}`;
@@ -91,15 +85,15 @@ $(document).on('keyup', '#consultaTerminal', (event) => {
             //         alert('Falha na conexão, tente novamente mais tarde');
             //     },10000)
             // }
-            
-        }else {
+
+        } else {
 
             var linha = $('#consultaTerminal').val();
             lastQuery = linha;
             var url = `${terminal_url}${linha}`;
 
             $('#consultaTerminal').val("");
-           // console.log(encodeURI(url));
+            // console.log(encodeURI(url));
             var abort;
             $('#consultaTerminalResult').append(`<p>${linha}</p>`);
             openLoader();
@@ -119,7 +113,7 @@ $(document).on('keyup', '#consultaTerminal', (event) => {
                     var htmlColunas = `<table class="terminalTable"><tr>`;
 
 
-                    $.each(data[0], function (key, value) {
+                    $.each(data[0], function(key, value) {
                         colunas.push(key);
 
                     });
@@ -146,7 +140,7 @@ $(document).on('keyup', '#consultaTerminal', (event) => {
                         text += `\r\n`;
 
                     }
-                  //  console.log(text);
+                    //  console.log(text);
 
                     var tabela = htmlColunas + registros + "</table>";
                     //console.log(tabela);
@@ -154,12 +148,16 @@ $(document).on('keyup', '#consultaTerminal', (event) => {
                 }
                 clearTimeout(abort);
             })
-            abort = setTimeout(function () { query.abort(); alert('Tempo de conecção expirou !'); closeLoader(); }, 10000);
+            abort = setTimeout(function() {
+                query.abort();
+                alert('Tempo de conecção expirou !');
+                closeLoader();
+            }, 10000);
 
         }
-    }else if(event.keyCode == 40){
+    } else if (event.keyCode == 40) {
         $('#consultaTerminal').val("");
-    }else if(event.keyCode == 38){
+    } else if (event.keyCode == 38) {
         $('#consultaTerminal').val(lastQuery);
     }
 })
@@ -177,9 +175,9 @@ var feature2addFile;
 //    // console.log(evt.clientY);
 //     $('#cursorADM').css('top',(evt.clientY-5)+"px");
 //     $('#cursorADM').css('left',(evt.clientX-15)+"px");
-    
+
 //     $('#cursorADM').fadeIn();
-    
+
 
 // })
 $(btnAdmin).on('click', () => {
@@ -194,8 +192,8 @@ $(btnAdmin).on('click', () => {
     } else {
         $(btnAdmin).css("border", "1px solid rgb(143, 252, 0)");
         adminMOde = true;
-        
-        
+
+
     }
 
 })
@@ -245,7 +243,7 @@ function updateAttrsAsAdmin() {
     openLoader();
 
     var query = $.getJSON(url, (data) => {
-     //   console.log(data);
+        //   console.log(data);
         closeLoader();
         clearTimeout(abort);
     })
@@ -281,7 +279,7 @@ function editarFeaturesGeometry2Bd() {
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ consulta: consultaUpdate }),
-            success: function (data) {
+            success: function(data) {
                 // console.log(data);
 
                 clearTimeout(abortAjax);
@@ -317,14 +315,14 @@ createLabeltoButtom('btnTerminal', 'consoleLabel', 90);
 
 
 
-$('#toolbox_tools').append(`<option value="add_arquivo">+ Arquivo</option>`);
-$('#toolbox_tools').append(`<option value="acessar_arquivo">Acessar Arquivo</option>`)
+// $('#toolbox_tools').append(`<option value="add_arquivo">+ Arquivo</option>`);
+// $('#toolbox_tools').append(`<option value="acessar_arquivo">Acessar Arquivo</option>`)
 
 
 
 
 function add_fileToolActived(pixel, coordinate) {
-    map.forEachFeatureAtPixel(pixel, function (feature) {
+    map.forEachFeatureAtPixel(pixel, function(feature) {
         $('#map_addFile').empty();
         $('#addfile_campos').empty();
         if (feature) {
@@ -337,7 +335,7 @@ function add_fileToolActived(pixel, coordinate) {
                     } else {
                         zoom = 10;
                     }
-                } catch{
+                } catch {
                     zoom = 12;
                 }
                 feature2addFile = feature;
@@ -370,13 +368,13 @@ function add_fileToolActived(pixel, coordinate) {
                         imagerySet: "AerialWithLabels"
                     })
                 });
-                
+
                 // var mapView = map.getLayerGroup();
                 // map_addFile.setLayerGroup(mapView);
                 map_addFile.addLayer(this_basemap);
                 map_addFile.addLayer(layer);
 
-                
+
 
                 for (var keys in feature.N) {
                     if (keys != "fotoDenuncia" && keys != "fotoOcorrencia" && keys != "geometry") {
@@ -408,7 +406,7 @@ AddFile_tools_buttom.on('click', () => {
     } else {
         if (feature2addFile.N.gid && feature2addFile.N.arquivo) {
             var data = new FormData();
-            $.each($('#add_file_feature')[0].files, function (i, file) {
+            $.each($('#add_file_feature')[0].files, function(i, file) {
                 data.append('file-' + i, file);
             });
             var d = new Date();
@@ -423,7 +421,7 @@ AddFile_tools_buttom.on('click', () => {
                 contentType: false,
                 processData: false,
                 method: 'POST',
-                success: function (data) {
+                success: function(data) {
                     alert(data.sucesso);
                     closeLoader();
                 }
@@ -438,7 +436,7 @@ AddFile_tools_buttom.on('click', () => {
 });
 
 function acessar_fileToolActived(pixel) {
-    map.forEachFeatureAtPixel(pixel, function (feature) {
+    map.forEachFeatureAtPixel(pixel, function(feature) {
         $('#acessar_arquivoTools').css('display', 'none');
         $('#acessar_arquivos_files').empty();
         if (feature) {
@@ -451,12 +449,12 @@ function acessar_fileToolActived(pixel) {
                 //console.log(url);
                 openLoader();
                 var abort;
-               var query = $.getJSON(url, (data) => {
+                var query = $.getJSON(url, (data) => {
                     if (data.erro) {
-                        
+
                         console.log(data.erro);
                     } else {
-                       
+
                         if (data.length > 0) {
                             $('#acessar_arquivoTools').fadeIn();
                             $('#acessar_arquivos_files').empty();
@@ -531,7 +529,7 @@ buscar_arquivo_btn.on('click', () => {
 $('#metadado_categoria').append(`<option value="ortofotos" id="optionOrtofoto">Ortofotos</option>`);
 
 
-$('#callAcessarOrtofoto').on('click',()=>{
+$('#callAcessarOrtofoto').on('click', () => {
     AcessarOrtofotos();
 })
 
@@ -542,11 +540,21 @@ function AcessarOrtofotos() {
     var arquivo_ano;
     var pasta;
     switch (ano) {
-        case "1998": arquivo_ano = "articulacao_1998.geojson",pasta = "privado_ano1998" ; break;
-        case "2003": arquivo_ano = "articulacao_2003.geojson", pasta = "privado_ano2003"; break;
-        case "2007": arquivo_ano = "articulacao_2007.geojson", pasta = "privado_ano2007"; break;
-        case "2009": arquivo_ano = "articulacao_2009.geojson", pasta = "privado_ano2009"; break;
-        case "2010": arquivo_ano = "articulacao_2010.geojson", pasta = "privado_ano2010"; break;
+        case "1998":
+            arquivo_ano = "articulacao_1998.geojson", pasta = "privado_ano1998";
+            break;
+        case "2003":
+            arquivo_ano = "articulacao_2003.geojson", pasta = "privado_ano2003";
+            break;
+        case "2007":
+            arquivo_ano = "articulacao_2007.geojson", pasta = "privado_ano2007";
+            break;
+        case "2009":
+            arquivo_ano = "articulacao_2009.geojson", pasta = "privado_ano2009";
+            break;
+        case "2010":
+            arquivo_ano = "articulacao_2010.geojson", pasta = "privado_ano2010";
+            break;
 
     }
     $.get(`public/GeoJSON/${arquivo_ano}`, (data) => {
@@ -588,7 +596,7 @@ function AcessarOrtofotos() {
 
         map_metadado.on('click', (evt) => {
             $('#thismap_attr').empty();
-            map_metadado.forEachFeatureAtPixel(evt.pixel, function (feature) {
+            map_metadado.forEachFeatureAtPixel(evt.pixel, function(feature) {
                 if (feature) {
                     for (var keys in feature.N) {
                         if (keys != "geometry") {
@@ -600,7 +608,7 @@ function AcessarOrtofotos() {
                     $('#meta_search_result').empty();
                     var arquivo = feature.N.location;
                     arquivo = arquivo.toLowerCase();
-                   // console.log(arquivo);
+                    // console.log(arquivo);
                     var href = encodeURI(`${host}/download?diretorio=${arquivo.trim()}&pasta=${pasta}`);
                     $('#meta_search_result').append(`<p><a class="download" target="_blank" href="${href}">${arquivo}.zip</a></p>`);
 
@@ -612,22 +620,22 @@ function AcessarOrtofotos() {
     })
 }
 
- 
+
 var btnResp = $('#btnResp');
 
 $(btnResp).fadeIn();
-btnResp.on('click',()=>{
-$('#Resp_div').fadeIn();
-$('#fechariResp').fadeIn();
-$('#backInfo').fadeOut();
+btnResp.on('click', () => {
+    $('#Resp_div').fadeIn();
+    $('#fechariResp').fadeIn();
+    $('#backInfo').fadeOut();
 })
-$('#fechariResp').on('click',()=>{
+$('#fechariResp').on('click', () => {
     $('#Resp_div').fadeOut();
-$('#fechariResp').fadeOut();
+    $('#fechariResp').fadeOut();
 
 })
-$('#fechariRespMObile').on('click',()=>{
-    $('#fechariResp').click(); 
+$('#fechariRespMObile').on('click', () => {
+    $('#fechariResp').click();
 })
 var Resp_div_div_btn = $('#Resp_div_div_btn');
 Resp_div_div_btn.on('click', () => {
@@ -636,18 +644,18 @@ Resp_div_div_btn.on('click', () => {
     var abort;
     var url = `${host}/fale/conosco/get?assunto=${assunto}&status=${status}`;
     url = encodeURI(url);
-   // console.log(url);
+    // console.log(url);
     openLoader();
     var query = $.getJSON(url, (data) => {
-     //   console.log(data);
+        //   console.log(data);
         $('#Resp_div_result').empty();
-        for(var f of data){
+        for (var f of data) {
             var linha_arquivo;
-            if(f.arquivo == "sem arquivo"){
-                linha_arquivo =  `<p>${f.arquivo} </p>`;
-                
-            }else{
-                linha_arquivo =`<a href="${host}/download/add_files?arquivo=${f.arquivo}" target="_blank">${f.arquivo} </a>`;
+            if (f.arquivo == "sem arquivo") {
+                linha_arquivo = `<p>${f.arquivo} </p>`;
+
+            } else {
+                linha_arquivo = `<a href="${host}/download/add_files?arquivo=${f.arquivo}" target="_blank">${f.arquivo} </a>`;
             }
             $('#Resp_div_result').append(`
             <div class="fale_resp" id="${f.protocolo}">
@@ -664,45 +672,45 @@ Resp_div_div_btn.on('click', () => {
             
             </div>
             `);
-            
+
         }
-       
+
         closeLoader();
         clearTimeout(abort);
     })
-    abort = setTimeout(()=>{
+    abort = setTimeout(() => {
         query.abort();
         closeLoader();
         alert('Tempo de conecção expirou !');
-    },10000);
+    }, 10000);
 
-    if(status == 'aberta'){
+    if (status == 'aberta') {
         $(document).on('dblclick', '.fale_resp', (event) => {
             var div = event.currentTarget;
             var protocolo = div.id;
             var r = confirm('Deseja marcar esta mensagem como lida ?');
-            if(r == true){
+            if (r == true) {
                 var url = `${host}/fale/conosco/update?protocolo=${protocolo}`;
-            url = encodeURI(url);
+                url = encodeURI(url);
                 openLoader();
-            var query = $.getJSON(url, (data) => {
-                if(data){
-                    if(data.erro){
-                        alert(data.erro);
-                    }else{
-                        alert(data.sucesso);
-                        
+                var query = $.getJSON(url, (data) => {
+                    if (data) {
+                        if (data.erro) {
+                            alert(data.erro);
+                        } else {
+                            alert(data.sucesso);
+
+                        }
                     }
-                }
-                
-                closeLoader();
-                clearTimeout(abort);
-            })
-            abort = setTimeout(()=>{
-                query.abort();
-                closeLoader();
-                alert('Tempo de conecção expirou !');
-            },10000);
+
+                    closeLoader();
+                    clearTimeout(abort);
+                })
+                abort = setTimeout(() => {
+                    query.abort();
+                    closeLoader();
+                    alert('Tempo de conecção expirou !');
+                }, 10000);
             }
         })
     }
@@ -711,29 +719,29 @@ Resp_div_div_btn.on('click', () => {
 
 
 var add_remove_funcionario = $('#add_remove_funcionario');
-add_remove_funcionario.on('change',()=>{
+add_remove_funcionario.on('change', () => {
     var valor = $(add_remove_funcionario).val();
-    if(valor == "adicionar"){
+    if (valor == "adicionar") {
         $('#adicionar').fadeIn();
-        $('#remover').css('display','none');
-    }else{
-        $('#adicionar').css('display','none');
+        $('#remover').css('display', 'none');
+    } else {
+        $('#adicionar').css('display', 'none');
         $('#remover').fadeIn();
     }
 })
 
 var closeAdd_remove = $('#closeAdd_remove');
-closeAdd_remove.on('click',()=>{
+closeAdd_remove.on('click', () => {
     $('#adicionar_remover').fadeOut();
 })
 
 var add_pronto_func = $('#add_pronto_func');
-add_pronto_func.on('click',()=>{
+add_pronto_func.on('click', () => {
     var nome = $('#add_nome_func').val();
     var matricula = $('#add_matricula_func').val();
     var senha = $('#add_senha_func').val();
     var email = $('#add_email_func').val();
-    
+
     var url = `${host}/create/new/agente?nome=${nome}&matricula=${matricula}&senha=${senha}&email=${email}`;
     url = encodeURI(url);
     var abort;
@@ -741,13 +749,13 @@ add_pronto_func.on('click',()=>{
     var query = $.getJSON(url, (data) => {
         closeLoader();
         clearTimeout(abort);
-        if(data.erro){
+        if (data.erro) {
             alert(data.erro);
-        }else{
+        } else {
             alert(data.sucesso);
         }
         $('#adicionar_remover').fadeOut();
-        
+
     })
     abort = setTimeout(() => {
         query.abort();
@@ -760,10 +768,10 @@ add_pronto_func.on('click',()=>{
 
 
 var remove_pronto_func = $('#remove_pronto_func');
-remove_pronto_func.on('click',()=>{
-        var matricula = $('#remove_matricula_func').val();
-   
-    
+remove_pronto_func.on('click', () => {
+    var matricula = $('#remove_matricula_func').val();
+
+
     var url = `${host}/delete/agente?matricula=${matricula}`;
     url = encodeURI(url);
     var abort;
@@ -771,13 +779,13 @@ remove_pronto_func.on('click',()=>{
     var query = $.getJSON(url, (data) => {
         closeLoader();
         clearTimeout(abort);
-        if(data.erro){
+        if (data.erro) {
             alert(data.erro);
-        }else{
+        } else {
             alert(data.sucesso);
         }
         $('#adicionar_remover').fadeOut();
-        
+
     })
     abort = setTimeout(() => {
         query.abort();
