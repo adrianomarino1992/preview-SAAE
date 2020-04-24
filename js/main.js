@@ -1,13 +1,8 @@
 // autor: Adriano Marino Balera adriano.marino1992@gmail.com
-// Feito no Estagio Jacareí/Fatec 2018/2019
 
 
-// tabelas para criar em abiente de dev : 
-// arquivos_features(tabela:text,gid:integer,arquivo:text,descricao:text);
-// tb_funcionarios(nome:text,matricula:text,senha:text,email:text);
-// faleconosco(assunto:text,texto:text;email:text;fone:text;arquivo:text,protocolo:text,status:text);
+//#region VariaveisGlobais
 
-/* variaveis globais */
 
 var allVisibleLayers = { layers: [] };
 var layersLegenda = [];
@@ -41,18 +36,9 @@ var agente;
 var numeroDeMsg = 0;
 
 
-/* variaveis globais */
+//#endregion
 
-
-
-
-
-
-
-
-
-/* mapa */
-
+//#region MapEvents
 
 $(document).on('mousemove', (event) => {
     if ($("#beta_theme").css('display') == 'none') {
@@ -103,13 +89,6 @@ function setAllToolsNull() {
     $(btnEditarLayer).css('border', 'none');
     $(btnToolbox).css('border', 'none');
 }
-
-// var olFullscreen = new ol.control.FullScreen({
-//     label: newImg('./img/fullscreen.png'), // IMG BUTTON OFF
-//     labelActive: newImg('./img/fechar.png'), // IMG BUTTON ON
-//     tipLabel: 'Tela Cheia' // TIP
-// });
-
 
 var olRotate = new ol.control.Rotate({
     label: newImg('./img/north.png'), // IMG BUTTON
@@ -190,14 +169,17 @@ var btnAuxiliar = document.createElement('button');
 btnAuxiliar.appendChild(newImg('./img/auxiliar.png'));
 var customAuxiliar = newCustomControl('custom_auxiliar', [btnAuxiliar]);
 
+
+
+
+
+//#endregion
+
+//#region Map
 var map = new ol.Map({
-    layers: [
-
-    ],
+    layers: [],
     controls: ol.control.defaults({ rotate: false }).extend([
-
         olRotate,
-
         customPosition,
         customLegenda,
         customArea,
@@ -211,14 +193,13 @@ var map = new ol.Map({
         customToolbox,
         customEditarLayer,
         customAuxiliar
-
     ]),
     target: 'map',
     view: new ol.View({
         projection: 'EPSG:4326',
         center: [-45.96, -23.3],
 
-        zoom: 4,
+        zoom: 10,
         minZoom: minZoom,
         maxZoom: 19
 
@@ -235,6 +216,11 @@ basemapssss = new ol.layer.Image({
 });
 map.addLayer(basemapssss);
 
+
+
+//#endregion
+
+//#region Layers
 function newVectorStyle(fill, stroke, width) {
     let style = new ol.style.Style({
         fill: new ol.style.Fill({
@@ -271,8 +257,7 @@ function createLabels(style, cor, contorno, largura, campo) {
     style.setText(text);
 }
 
-
-
+//#endregion
 
 
 
@@ -282,29 +267,6 @@ var customDesenhar = newCustomControl('custom_desenhar', [btnDesenhar]);
 map.addControl(customDesenhar);
 
 
-/* mapa */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* menu principal */
 
 
 
@@ -312,7 +274,6 @@ var div_base_cartografica = $('#div_base_cartografica');
 div_base_cartografica.on('click', () => {
     $('#basecartografica_data').fadeOut();
 })
-
 
 var camadas_btn = $('#camadas_btn');
 
@@ -493,7 +454,7 @@ function AddlayerFromFolders(id, nome) {
         openLoader();
         var query = $.getJSON(url, (data) => {
 
-            //  console.log(data);
+            console.log(data);
             if (data.erro) {
                 alert('Falha na comunicação com servidor');
             } else {
@@ -586,29 +547,16 @@ function AddlayerFromFolders(id, nome) {
         } else {
             openLoader();
             var query = $.getJSON(url, (data) => {
-                //  console.log(data);
+                console.log(data);
                 if (data.erro) {
                     alert('Falha na comunicação com servidor');
                 } else {
                     createFeaturesFromJSON(data, id, nome);
-                    // var view = new ol.View({
-                    //     projection: 'EPSG:4326',
-                    //     center: [-46.05, -23.3],
-
-                    //     zoom: 11,
-                    //     minZoom: 4,
-                    //     maxZoom: 19
-
-                    // })
-                    // map.setView(view);
                 }
-
                 clearTimeout(abort);
                 setTimeout(() => {
-                    // $(btnLegenda).click();
                     closeLoader();
                 }, 100);
-                //  $(btnLegenda).click();
             })
             abort = setTimeout(() => {
                 query.abort();
@@ -704,457 +652,13 @@ function addPointToCoordinate(longitude, latitude) {
 };
 
 
-var IluminacaoPublica = [
-    'Ativação De Chave magnética',
-    'Instalação de Kit de Iluminação Pública',
-    'Luminária Quebrada',
-    'Lâmpada Acesa Durante o Dia',
-    'Lâmpada Apagada',
-    'Lâmpada Piscando',
-    'Mais De Uma Lâmpada Apagada Na Mesma Rua',
-    'Praça com Lâmpadas Apagadas',
-    'Todas'
-];
 
-var ManutencaoDeViasPublicas = [
-    'Concerto de Tampa e Boca de Lobo',
-    'Desnível de Tampa em Via Pública',
-    'Manutenção de Bloquete</option>',
-    'Manutenção de calçadas</option>',
-    'Tapa Buraco',
-    'Todas'
-];
 
-var MeioAmbiente = [
-    'Capina e Limpeza de Área Pública',
-    'Limpeza de Córregos',
-    'Manutenção de Praças',
-    'Manutenção de calçadas',
-    'Poda de Árvore',
-    'Remoção de Animais Mortos',
-    'Varrição',
-    'Todas'
-];
 
-var MobilidadeUrbana = [
-    'Manutenção de Pinturas de Solo',
-    'Manutenção de Placas',
-    'Manutenção de Vias Públicas',
-    'Manutenção em calçadas',
-    'Manutenção Semafórica',
-    'Pinturas de Guias',
-    'Solicitação de Lombadas e Lombofaixas',
-    'Solicitação de Rampa de acesso em Via Pública',
-    'Todas'
-];
 
-var Onibus = [
-    'Denúncia de Ônibus Atrasado',
-    'Denúncia de Ônibus Lotado',
-    'Horário de Ônibus',
-    'Intinerários',
-    'Limpeza de Ponto de Ônibus',
-    'Ponto de Ônibus Danificado',
-    'Todas'
-];
 
-var Ouvidoria = [
-    'Denúncia',
-    'Elogios',
-    'Reclamações',
-    'Sugestões',
-    'Todas'
-];
 
-var ProtecaoAnimal = [
-    'Animais de Grande Porte em Via Pública',
-    'Animal Abandonado',
-    'Remoção de Animal Morto',
-    'Todas'
-];
 
-var SAAE = [
-    'Limpeza de boca Lobo',
-    'Serviço de Drenagem e Limpeza de Galeria',
-    'Vazamento',
-    'Todas'
-];
-
-
-var Limpeza_Publica = [
-    "Descarte de lixo nas vias",
-    "Deficiencia de varredura",
-    "Deficeiencia de coleta",
-    "Mato crescendo nas guias",
-    "Animal de pequeno porte morto"
-];
-var Coleta_de_Residuos = [
-    "Coleta de residuo",
-    "Coleta de residuo hospitalar",
-    "Coleta de residuo reciclavel"
-
-];
-var Meio_Ambiente = [
-    "Poluiçao atmosferica",
-    "Lançamento de residuos em curso d´gua",
-    "Incomodo gerado por industrias"
-];
-var Protecao_Animal = [
-    "Mals tratos",
-    "Animal abandonado",
-    "Quer doar"
-
-];
-
-
-var gov_categorias = [
-    "Iluminacao Pública",
-    "Manutenção De Vias Públicas",
-    "Mobilidade Urbana",
-    "Ônibus",
-    "Ouvidoria",
-    "Proteção Animal",
-    "SAAE",
-
-]
-
-var sma_categorias = [
-    "Limpeza Publica",
-    "Coleta de Residuos",
-    "Meio Ambiente",
-    "Proteção Animal"
-
-]
-
-
-
-var cat_sel = $('#cat_sel');
-var cat_sel_secretaria = "SMA";
-
-cat_sel.on('change', () => {
-    var secretaria = $(cat_sel).val();
-    if (secretaria == "SMA") {
-        addSMAcats();
-        carregarSubSel(Limpeza_Publica);
-        cat_sel_secretaria = "SMA";
-
-    } else {
-        addGOVcats();
-        carregarSubSel(IluminacaoPublica);
-        cat_sel_secretaria = "GOV";
-    }
-})
-
-
-function addSMAcats() {
-    $('#divFiltrardadosFiscalizacaoOcorrencia_cat_sel').empty();
-    for (var cat of sma_categorias) {
-        $('#divFiltrardadosFiscalizacaoOcorrencia_cat_sel').append(`<option value='${cat}'>${cat}</option>`);
-    }
-}
-
-function addGOVcats() {
-    $('#divFiltrardadosFiscalizacaoOcorrencia_cat_sel').empty();
-    for (var cat of gov_categorias) {
-        $('#divFiltrardadosFiscalizacaoOcorrencia_cat_sel').append(`<option value='${cat}'>${cat}</option>`);
-    }
-}
-
-function carregarSubSel(obj) {
-    $('#divFiltrardadosFiscalizacaoOcorrencia_subcat_sel').empty();
-    for (var sub_cat of obj) {
-        $('#divFiltrardadosFiscalizacaoOcorrencia_subcat_sel').append(`<option value="${sub_cat}">${sub_cat}</option>`);
-    }
-
-}
-addSMAcats();
-carregarSubSel(Limpeza_Publica);
-var divFiltrardadosFiscalizacaoOcorrencia_cat_sel = $('#divFiltrardadosFiscalizacaoOcorrencia_cat_sel');
-divFiltrardadosFiscalizacaoOcorrencia_cat_sel.on('change', () => {
-    var cat = $(divFiltrardadosFiscalizacaoOcorrencia_cat_sel).val();
-    if (cat_sel_secretaria == "SMA") {
-
-        //   console.log(cat);
-        switch (cat) {
-            case sma_categorias[0]:
-                carregarSubSel(Limpeza_Publica);
-                break;
-            case sma_categorias[1]:
-                carregarSubSel(Coleta_de_Residuos);
-                break;
-            case sma_categorias[2]:
-                carregarSubSel(Meio_Ambiente);
-                break;
-            case sma_categorias[3]:
-                carregarSubSel(Protecao_Animal);
-                break;
-        }
-    } else {
-        //   console.log(cat);
-        switch (cat) {
-            case gov_categorias[0]:
-                carregarSubSel(IluminacaoPublica);
-                break;
-            case gov_categorias[1]:
-                carregarSubSel(ManutencaoDeViasPublicas);
-                break;
-            case gov_categorias[2]:
-                carregarSubSel(MobilidadeUrbana);
-                break;
-            case gov_categorias[3]:
-                carregarSubSel(Onibus);
-                break;
-            case gov_categorias[4]:
-                carregarSubSel(Ouvidoria);
-                break;
-            case gov_categorias[5]:
-                carregarSubSel(ProtecaoAnimal);
-                break;
-            case gov_categorias[6]:
-                carregarSubSel(SAAE);
-                break;
-        }
-    }
-})
-
-
-
-var divFiltrardadosFiscalizacaoOcorrencia_exec = $('#divFiltrardadosFiscalizacaoOcorrencia_exec');
-divFiltrardadosFiscalizacaoOcorrencia_exec.on('click', () => {
-    var categoria = $('#divFiltrardadosFiscalizacaoOcorrencia_cat_sel').val();
-    var subcategoria = $('#divFiltrardadosFiscalizacaoOcorrencia_subcat_sel').val();
-    var status = $('#divFiltrardadosFiscalizacaoOcorrencia_status_sel').val();
-    var url = `${host}/query/fiscalizacao?secretaria='Governo'&categoria=${categoria}&subcategoria=${subcategoria}&status=${status}`;
-    var url = encodeURI(url);
-    var abort;
-    openLoader();
-    var query = $.getJSON(url, (data) => {
-        closeLoader();
-        clearTimeout(abort);
-        if (data.erro) {
-            console.log(data.erro);
-        }
-        if (data.length == 0) {
-            alert('Nenhum registro encontrado');
-        }
-        if (data.length > 0) {
-            var source = new ol.source.Vector();
-
-            var layer = new ol.layer.Vector({
-                source: source,
-                zIndex: 2
-            })
-            map.addLayer(layer);
-            // var modify = new ol.interaction.Modify({ source: source });
-            // map.addInteraction(modify);
-            // snap = new ol.interaction.Snap({ source: source });
-            // map.addInteraction(snap);
-            var obj = { 'camada': layer, 'nome': `Categoria : ${categoria}, Subcategoria : ${subcategoria}` };
-
-
-            allVisibleLayers.layers.push(obj);
-
-
-            for (var f of data) {
-                var feature = createFeatureFromGeoJson(f, 2);
-                layer.getSource().addFeatures(feature);
-            }
-
-        }
-    })
-    abort = setTimeout(() => {
-        query.abort();
-        closeLoader();
-        alert('Tempo de espera expirado, verifique sua conexão !');
-    }, 10000)
-
-})
-
-
-var buscar_protocolo_btn = $('#buscar_protocolo_btn');
-
-buscar_protocolo_btn.on('click', () => {
-    var protocolo_secretaria = $('#protocolo_secretaria').val();
-    var protocolo = $('#buscar_protocolo').val();
-    var tb;
-    var url;
-    if (protocolo_secretaria == "SMA") {
-        tb = 1;
-        url = `${host}/consulta/tabular?secretaria=Meio_Ambiente&consulta=protocolo&protocolo=${protocolo}`;
-    } else {
-        tb = 2;
-        url = `${host}/consulta/tabular?secretaria=Governo&consulta=protocolo&protocolo=${protocolo}`;
-    }
-    $('#buscar_result').empty();
-
-
-    url = encodeURI(url);
-    openLoader();
-    var abort;
-
-    var query = $.getJSON(url, (data) => {
-        clearTimeout(abort);
-        closeLoader();
-        if (data.length > 0) {
-            var f = data[0];
-            for (var keys in f) {
-
-                if (keys != "fotoDenuncia" && keys != "fotoOcorrencia") {
-                    $('#buscar_result').append(` <h2 class="cat_teme">${keys} : </h2>
-                        <input type="text" class="input" disabled value="${f[keys]}">`);
-                } else if (keys == "fotoDenuncia" || keys == "fotoOcorrencia") {
-                    $('#buscar_result').append(`<h2 class="cat_teme">${keys} : </h2><div id="marker" draggable=true>
-                    <img src="" id="fotoAtual">
-                </div>`)
-                    $('#fotoAtual').attr('src', `data:image/png;base64, ${f[keys]}`);
-
-
-                    //   var marker = new ol.Overlay({
-                    //     position: [f.lng,f.lat],
-                    //     positioning: 'center-center',
-                    //     element: document.getElementById('marker'),
-                    //     stopEvent: false
-                    //   });
-                    //   map.addOverlay(marker);
-                }
-            }
-
-            var feature = createFeatureFromGeoJson(f, tb);
-            // console.log(feature);
-            var source = new ol.source.Vector({});
-
-            var layer = new ol.layer.Vector({
-                source: source,
-                zIndex: 2
-            })
-            map.addLayer(layer);
-            layer.getSource().addFeatures(feature);
-            var obj = { 'camada': layer, 'nome': `Resultado Busca : ${protocolo}` };
-            if (allVisibleLayers.layers.indexOf(obj) == -1) {
-
-                allVisibleLayers.layers.push(obj);
-            }
-        }
-    })
-    abort = setTimeout(() => {
-        query.abort();
-        closeLoader();
-        alert('Tempo de espera expirado, verifique sua conexão !');
-    }, 15000)
-
-
-
-})
-
-
-var buscar_tipo = $('#buscar_tipo');
-buscar_tipo.on('change', () => {
-    var tipo = $(buscar_tipo).val();
-    if (tipo == "protocolo") {
-        $('#mapa_meta_ortofoto').fadeOut();
-        $('#divBuscar_metadado').css('display', 'none');
-        $('#divBuscar_protocolo').fadeIn();
-        $('#buscar_result').css('display', 'block');
-        $('#divBuscar_arquivos').css('display', 'none');
-
-
-    } else if (tipo == "metadado") {
-        $('#divBuscar_metadado').fadeIn();
-        $('#divBuscar_protocolo').css('display', 'none');
-        $('#buscar_result').css('display', 'none');
-        $('#divBuscar_arquivos').css('display', 'none');
-
-    } else {
-        $('#mapa_meta_ortofoto').fadeOut();
-        $('#divBuscar_protocolo').css('display', 'none');
-        $('#divBuscar_metadado').css('display', 'none');
-        $('#buscar_result').css('display', 'none');
-        $('#divBuscar_arquivos').fadeIn();
-
-        var url = `${host}/fontededados/contemfiles`;
-        url = encodeURI(url);
-        var abort;
-        openLoader();
-        var query = $.getJSON(url, (data) => {
-            var select = $('#arquivo_categoria');
-            select.empty();
-            if (data.erro) {
-                console.log(data.erro);
-            } else {
-                if (data.length == 0) {
-                    select.append(`<option value="sem_dados">0 arquivos encontrados</option>`);
-                } else {
-                    for (var row of data) {
-                        select.append(`<option value="${row.tabela}">${row.tabela}(${row.count})</option>`);
-                    }
-                }
-
-
-            }
-            clearTimeout(abort);
-            closeLoader();
-        })
-        abort = setTimeout(() => {
-            query.abort();
-            closeLoader();
-            alert('Tempo de espera expirado, verifique sua conexão !');
-        }, 10000)
-    }
-})
-
-var metadado_cat = $('#metadado_categoria');
-metadado_cat.on('change', () => {
-
-    if ($('#metadado_categoria').val() == "ortofotos") {
-
-        $('#ortofoto_ano').empty();
-        $('#ortofoto_ano').append(`<h2 class="cat_teme">Ano : </h2>`)
-        $('#ortofoto_ano').append(`<select name="" id="metadado_categoria_ano" class="sel_teme_white">
-        <option value="1998">1998</option>
-        <option value="2003">2003</option>
-        <option value="2007">2007</option>
-        <option value="2009">2009</option>
-        <option value="2010">2010</option>
-
-    </select>`)
-    } else {
-        $('#ortofoto_ano').empty();
-        $('#mapa_meta_ortofoto').fadeOut();
-    }
-})
-
-var buscar_meta_btn = $('#buscar_meta_btn');
-buscar_meta_btn.on('click', () => {
-    setAllToolsNull();
-    $('#meta_search_result').empty();
-    var categoria = $('#metadado_categoria').val();
-    if (categoria == "ortofotos") {
-        $('#callAcessarOrtofoto').click();
-    } else {
-        $('#mapa_meta_ortofoto').fadeOut();
-        var url = `${host}/listarAllFiles?pasta=${categoria}`;
-        url = encodeURI(url);
-        var abort;
-        openLoader();
-        var query = $.getJSON(url, (data) => {
-            closeLoader();
-            clearTimeout(abort);
-            for (var file of data.files) {
-                $('#meta_search_result').append(`<p><a class="download" target="_blank" href="${host}/download?diretorio=${file.nome}&pasta=${categoria}">${file.nome}</a></p>`);
-
-            }
-
-        })
-        abort = setTimeout(() => {
-            query.abort();
-            closeLoader();
-            alert('Tempo de espera expirado, verifique sua conexão !');
-        }, 10000)
-
-    }
-
-
-})
 $('#popup').on('dblclick', () => {
     $('#popup').fadeOut();
 })
@@ -1186,15 +690,6 @@ function getFeatureId(pixel) {
                 <img src="data:image/png;base64, ${f[keys]}" id="fotoAtual">
             </div>`)
 
-
-
-                //   var marker = new ol.Overlay({
-                //     position: [f.lng,f.lat],
-                //     positioning: 'center-center',
-                //     element: document.getElementById('marker'),
-                //     stopEvent: false
-                //   });
-                //   map.addOverlay(marker);
             }
 
         }
@@ -2648,7 +2143,12 @@ function createFeatureFromGeoJson(ocorrencia, tb) {
 }
 
 
+
 function createFeaturesFromJSON(json, tb, nome) {
+
+    /*
+    debugger
+    */
 
     var source = new ol.source.Vector({});
     var layer = new ol.layer.Vector({
@@ -2659,23 +2159,23 @@ function createFeaturesFromJSON(json, tb, nome) {
     var WKT = new ol.format.WKT();
 
     for (var f of json) {
-        var featureFromText = WKT.readFeature(f.geometry);
-        for (var keys in f) {
-            if (keys != "geom" && keys != "geometry") {
-                // console.log(featureFromText);
-                try {
-                    var js = `featureFromText.setProperties({${keys}:'${f[keys]}'});`;
-                    eval(js);
-                } catch {
+        if (f.geometry) { // devido aos .shps terem geometrias topograficamente incorretas 
+            var featureFromText = WKT.readFeature(f.geometry);
+            for (var keys in f) {
+                if (keys != "geom" && keys != "geometry") {
+                    try {
+                        var js = `featureFromText.setProperties({${keys}:'${f[keys]}'});`;
+                        eval(js);
+                    } catch {
+
+                    }
 
                 }
 
             }
-
+            featureFromText.setProperties({ arquivo: tb });
+            source.addFeature(featureFromText);
         }
-        featureFromText.setProperties({ arquivo: tb });
-        //console.log(featureFromText);
-        source.addFeature(featureFromText);
 
     }
 
@@ -2827,7 +2327,7 @@ function addImage2Map(file, titulo, xmax, ymax, xmin, ymin) {
 var Agd;
 var labels = ['LayersLabel', 'MapaBaseLabel', 'GradeLabel', 'AddGeoJSONLabel', 'EstatisticasLabel',
     'buscarLabel', 'criarLabel', 'downloadLabel', 'medirLabel', 'exportarLabel', 'estiloLabel',
-    'ferramentasLabel', 'editarLabel', 'consoleLabel', 'admLabel', 'menu_btn',
+    'ferramentasLabel', 'editarLabel', 'consoleLabel', 'admLabel', 'menu_btn', 'ajuda_color', 'auxiliar',
     'ajuda_btn'
 ];
 
@@ -4090,14 +3590,7 @@ $(btnAuxiliar).on('click', () => {
 })
 
 
-
-
-
-
-
 function getFeatureIdAuxiliar(pixel) {
-
-
 
     var feature = map_auxiliar.forEachFeatureAtPixel(pixel, function(feature) {
 
@@ -4117,15 +3610,6 @@ function getFeatureIdAuxiliar(pixel) {
                 <img src="data:image/png;base64, ${f[keys]}" id="fotoAtual">
             </div>`)
 
-
-
-                //   var marker = new ol.Overlay({
-                //     position: [f.lng,f.lat],
-                //     positioning: 'center-center',
-                //     element: document.getElementById('marker'),
-                //     stopEvent: false
-                //   });
-                //   map.addOverlay(marker);
             }
 
         }
@@ -4170,9 +3654,6 @@ $('#container2').on('click', () => {
 })
 
 
-
-
-
 $('#user').on('keypress', (event) => {
     if (event.keyCode == 13) {
         $(exec_LogIn).click();
@@ -4183,6 +3664,5 @@ $('#senha').on('keypress', (event) => {
         $(exec_LogIn).click();
     }
 })
-
 
 $('#container2').click();

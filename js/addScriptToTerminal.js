@@ -623,7 +623,7 @@ function AcessarOrtofotos() {
 
 var btnResp = $('#btnResp');
 
-$(btnResp).fadeIn();
+
 btnResp.on('click', () => {
     $('#Resp_div').fadeIn();
     $('#fechariResp').fadeIn();
